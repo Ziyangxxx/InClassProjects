@@ -1,0 +1,188 @@
+/*
+Theme Name: Space Debris
+Version: 1.0
+*/
+
+body {
+	line-height: 150%;
+	font-family: Verdana;
+}
+
+h1, h2, h3, h4 {
+	font-weight: 700;
+}
+
+h1 {
+	color: #101F50;
+}
+
+nav.navbar.navbar-inverse {
+	background-color: #101f50;
+	margin-bottom: 0;
+	position: relative;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+	color: #fff;
+	text-indent: 15px;
+}
+
+.navbar-inverse .navbar-nav > li > a:hover, 
+.navbar-inverse .navbar-nav > li > a:active {
+	color: #F9CE06;
+}
+
+.navbar-inverse .navbar-nav > li.current_page > a {
+	color: #F9CE06;
+}
+
+.navbar-inverse .navbar-brand {
+	color: #fff;
+}
+
+.navbar-inverse li {
+	border-top: 1px solid #cfcfcf;
+}
+
+#site_tagline {
+	height: 90px;
+	text-align: center;
+}
+
+#site_tagline h1 {
+	margin: 30px 0;
+	line-height: 130%;
+}
+
+#slider img {
+
+	width: 100%;
+	height: auto;
+}
+
+.callout {
+	margin: 15px 0;
+}
+
+#callouts {
+	padding-bottom: 30px;
+}
+
+
+.callout h2 {
+	margin: 0;
+	padding: 0;
+	line-height: 52px;
+	color: #fff;
+	background: #f9ce06;
+	padding-left: 15px;
+	margin-bottom: 0px;
+	font-size: 24px;
+}
+
+.callout img {
+	width: 100%;
+	height: auto;
+}
+
+.callout p {
+	margin: 20px 0;
+}
+
+#footer {
+	height: 85px;
+	font-size: 90%;
+	color: #fff;
+	line-height: 85px;
+	background: #101f50;
+	text-align: center;
+}
+
+#page_header {
+	margin-top: 15px;
+}
+
+#page_header img {
+	width: 100%;
+	height: auto;
+}
+
+#primary img {
+	margin-bottom: 15px;
+	max-width: 100%;
+}
+
+#secondary h2 a {
+	color: #fff;
+}
+
+a.menu_toggle {
+	width: 50px;
+	height: 50px;
+	position: absolute;;
+	right: 15px;
+	top: 0;
+	background-image: url('images/menu-icon.png');
+	text-indent: -9999px;
+	background-repeat: no-repeat;
+	display: block;
+}
+
+ul.menu {
+	display: none;
+}
+
+.navbar-brand {
+    float: left;
+    font-size: 18px;
+    height: 50px;
+    line-height: 50px;
+    padding: 5px 30px 5px 15px;
+}
+
+.navbar-brand img {
+	height: 40px;
+	width: auto;
+}
+
+
+
+@media all and (min-width: 768px) {
+
+	.navbar-inverse .navbar-nav > li > a  {
+		text-indent: 0;
+	}
+
+	.navbar-inverse li {
+	border-top: none;
+	}
+
+	div#secondary {
+		padding-right: 0px;
+		padding-top: 15px;
+	}
+
+	a.menu_toggle {
+		display: none;
+	}
+
+	ul.menu {
+		display: block;
+	}
+
+}
+
+#comment_list{
+    margin-top: 30px;
+}
+
+#comment_list li{
+    list-style-type: none;
+}
+
+#comment_list .comment {
+    margin-top: 10px;
+    padding: 10px;
+    border-top: 1px solid #cfcfcf;
+}
+
