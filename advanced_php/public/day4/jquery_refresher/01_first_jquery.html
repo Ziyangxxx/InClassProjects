@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>jQuery Refresher</title>
+</head>
+<body>
+
+	<h1 id="title">jQuery Refresher</h1>
+
+	<p>Check console for output</p>
+
+	<ul class="nav">
+
+		<li><a data-slug="google" href="https://google.ca">Google</a></li>
+		<li><a data-slug="dogpile" href="https://dogpile.com">Dogpile</a></li>
+		<li><a data-slug="duckduckgo" href="https://duckduckgo.com">DuckDuckGo</a></li>
+		<li><a data-slug="yahoo" href="https://yahoo.ca">Yahoo</a></li>
+		<li><a data-slug="bing" href="https://bing.com">Bing</a></li>
+
+	</ul>
+
+	<p><a href="help.com">Help</a><p>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+
+		$(document).ready(function(){
+			console.log('jQuery is loaded, and the DOM is ready!');
+
+			// Use CSS selectors to target individual elements
+			// or groups of elements
+			// document.getELementById('title').style.display = 'none';
+			$('#title').hide('slow');
+
+			// document.getElementById('title').style.display = 'block';
+			$('#title').show('slow');
+
+			// document.queryAll('.nav a')
+			$('.nav a').click(function(e){
+
+				// this without $ gets raw element
+				// console.log(this);
+				
+				e.preventDefault();
+				
+				// this with $() gets jQuery enhanced version of the element
+				console.log($(this));
+				console.log($(this).data('slug'));
+
+			});
+
+		});
+
+		jQuery(document).ready(function(){
+			console.log('Use jQuery without $ if there are conflicts with other libraries');
+		});
+
+	</script>
+</body>
+</html>

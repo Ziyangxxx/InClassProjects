@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Interactive Ajax</title>
+	<style>
+		body {
+			font-family: "Open Sans", Verdana, sans-serif;
+		}
+		.row {
+			display: flex;
+		}
+		.row div {
+			padding: 10px;
+			border: 1px solid #cfcfcf;
+		}
+		.col1 {
+			flex: 1;
+		}
+		.col4 {
+			flex: 4;
+		}
+	</style>
+
+	<script>
+
+
+		function loadContent()
+		{
+			// Create XHR object
+			var xhr = new XMLHttpRequest();
+
+			// Define request method and URL
+			xhr.open('GET', '01_first_ajax.txt');
+
+			// Define the onreadystatechange callback function
+			xhr.onreadystatechange = function()
+			{
+				if(xhr.readyState === 4 && xhr.status === 200) {
+					document.getElementById('content').innerHTML = xhr.response;
+				}
+			}
+
+			// send the request
+			xhr.send(null);
+		}
+
+		function clearContent()
+		{
+			document.getElementById('content').innerHTML = '<p>Default Content</p>';
+		}
+
+	</script>
+
+</head>
+<body>
+
+	<h1 id="title">Interactive Ajax</h1>
+
+
+	<div class="row">
+
+		<div class="col1">
+
+			<p><button onclick="loadContent()" id="load">Load content</button></p>
+			<p><button onclick="clearContent()" id="clear">Clear content</button></p>
+
+		</div>
+
+		<div class="col4" id="content">
+			<p>Default Content</p>
+		</div>
+
+	</div>
+
+</body>
+</html>

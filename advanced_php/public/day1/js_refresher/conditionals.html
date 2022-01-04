@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Conditionals</title>
+	<script>
+		
+		var $age = 18;
+
+		// Most conditional code in Javascript works EXACTLY
+		// the same as it does in PHP (or Java)... in fact, you
+		// cand cut and paste this code into PHP and it will work
+		// (without the console.log of course)
+		if($age >= 18) {
+			// console.log('You are old enough');
+		} else {
+			// console.log('You are too young');
+		}
+
+		if($age > 18) {
+			// do somethinge
+		} else if($age < 18) { // elseif in PHP becomes else if in JS
+			// do something
+		} else {
+			// do something
+		}
+
+		// In most cases DO NOT DEPEND ON TRUTHINESS OR FALSINESS
+		// Instead, evaluate to Booleans
+		
+		// This depends on truthiness... all of us do this when
+		// we're lazy or in a hurry
+		if($age) {
+
+		}
+
+		// However, it's better not to... because you always
+		// depend on real Booleans
+		if($age < 0 || $age > 0) {
+			// this will evaluate to TRUE
+		} else {
+			// or FALSE
+		}
+
+		// null
+		// 0
+		// empty string
+		// []
+		// {}
+
+		var x = {};
+		if(x)  {
+			console.log ('Empty object is truthy');
+		} else {
+			console.log('Empty object is falsey');
+		}
+
+
+	</script>
+</head>
+<body>
+	<h1>Conditionals</h1>
+
+	<p>See console for output</p>
+
+</body>
+</html>

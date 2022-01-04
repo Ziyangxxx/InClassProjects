@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css">
+    
+    <style>
+
+        body{
+            margin-top: 50px;
+        }
+
+    </style>
+
+    <script>
+
+        window.onload = function(){
+            getAll();
+        }
+
+        // xhr
+
+        function getAll(){
+
+            // create xhr
+            var xhr = new XMLHttpRequest();
+            // open GET to addressbookserver.php
+            xhr.open('GET', 'address_book_server.php');
+
+            xhr.responseType = 'json';
+
+            // add event handler for onreadystatechange
+            xhr.onreadystatechange = function() {
+
+                // output results to list view in table in or li
+                if(this.readyState === 4 && this.status ===200){
+                    console.log(this.response);
+                    outputList(this.response);
+                }
+            }
+
+            // send
+            xhr.send();
+        }
+
+        function outputList(list){
+
+            // do code to dynamiclly create HTML ouput to div
+            var html = '<ul class="list-group">'
+            // loop through list
+            for(var i=0;i<list.length;i++){
+                var item = `<li class="list-group-item">
+                <a href="#" data-id=${list[i].id} onclick="loadDetail(this)">
+                ${list[i].first_name} 
+                ${list[i].last_name}
+                </a> 
+                -- ${list[i].phone}</li>`;
+                html += item;
+            }
+                html += '</ul>';
+                console.log(html);
+                document.getElementById('list').innerHTML = html;
+            // Start creating empty string for output
+
+            // add each list element
+
+            // remember to use JSX... '${user.first}'
+        }
+
+        function loadDetail(el){
+
+            event.preventDefault();
+            var id = el.getAttribute('data-id');
+            var data = 'id=' + id;
+
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', 'address_book.server.php?' + encodeURI(data));
+            xhr.responseType = 'json';
+            xhr.onreadystatechange = function(){
+                if(this.readyState === 4 && this.status === 200){
+                    var detail = 
+                    `<ul class="list-group">
+                    <li class="list-group-item"><strong>Name: </strong>${users[i].first_name} ${user[i].last_name}</li>
+                    <li class="list-group-item"><strong>Phone: </strong>${users[i].phone}</li>
+                    <li class="list-group-item"><strong>Street: </strong>${users[i].street}</li>
+                    <li class="list-group-item"><strong>City: </strong>${users[i].city}</li>
+                    <li class="list-group-item"><strong>Country: </strong>${users[i].country}</li>
+                    <li class="list-group-item"><strong>Postal Code: </strong>${users[i].postal_code}</li>
+                    </ul>`;
+                    
+                    console.log(detail);
+                    document.getElementById('detail').innerHTML = detail;
+                }
+            }
+        }
+
+    </script>
+    <title>Address Book</title>
+</head>
+<body>
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-sm-6">
+
+                <h1>Address Book</h1>
+
+                <form class ="form">
+                    <input class="form-control" name="s" type="text" placeholder="search...">
+                </form>
+                
+                <div id="list">
+                    <!-- list view -->
+                </div>
+            </div>
+
+            <div id="detail" class="col-sm-6">
+                <h2>Detail View</h2>
+                <!-- output detail view-->
+            </div>
+
+        </div>
+
+    </div>
+    
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>First jQuery Ajax</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script>
+
+		// Four jQuery Ajax Functions
+		
+		// load() - easiest to use... load a file into a selected element - use with HTML that needs to be inserted into a documnet
+		
+		// others:   get(), post(), ajax()
+
+		$(document).ready(function(){
+			$('#content').load('server_01.php');
+		});
+
+
+		// Equivalent functionality using vanilla javascript
+		// // 1. Create the XHR object
+			
+		// 	var xhr = new XMLHttpRequest();
+
+		// 	// 2. Define where we are sending request to
+			
+		// 	xhr.open('GET', '01_first_ajax.txt');
+
+
+		// 	// 3. Define our callback for the changing readyState
+			
+		// 	xhr.onreadystatechange = function() {
+		// 		console.log(xhr.readyState);
+		// 		if(xhr.readyState === 4 && xhr.status === 200) {
+		// 			console.log(xhr.response);
+		// 			document.getElementById('title').innerHTML = 'My First Ajax Request!';
+		// 			document.getElementById('output').innerHTML = xhr.response;
+		// 		}
+		// 	}
+
+
+		// 	// 4.  Actually send the request
+			
+		// 	xhr.send(null);
+
+
+	</script>
+</head>
+<body>
+
+	<div id="content"></div>
+
+
+</body>
+</html>

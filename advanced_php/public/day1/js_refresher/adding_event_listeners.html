@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Adding Event Listeners</title>
+	<script>
+
+		window.onload = function()
+		{
+			console.log(this); // window
+			handleSearchClicks();
+		}
+
+		function handleLink(el)
+		{
+			console.log(el); // the link
+			console.log(el.href);
+			return false;
+		}
+
+		function handleSearchClicks()
+		{
+			alert('Hi');
+			var links = document.querySelectorAll('p a');
+			for(var i = 0; i < links.length; i++) {
+				links[i].addEventListener('click', function(e){
+					e.preventDefault();
+					console.log(this); // the link
+					alert(this.href);
+				});
+
+			}
+		}
+
+
+	</script>
+</head>
+<body>
+
+	<h1>Adding Event Listeners</h1>
+
+	<nav>
+	  	<ul>
+		    <li class="navlink"><a onclick="return handleLink(this);" class="link" href="/home">Home</a></li>
+		    <li class="navlink"><a onclick="return handleLink(this);" class="link" href="/about">About</a></li>
+		    <li class="navlink"><a onclick="return handleLink(this);" class="link" href="/clients">Clients</a></li>
+		    <li class="navlink"><a onclick="return handleLink(this);" class="link" href="/contact">Contact Us</a></li>
+  		</ul>
+	</nav>
+
+	<p id="search">
+		<a href="https://google.ca">Google</a><br />
+		<a href="https://duckduckgo.com">DuckDuckGo</a><br />
+		<a href="https://dogpile.com">Dogpile</a><br />
+		<a href="https://bing.com">Bing</a><br />
+	</p>
+
+</body>
+</html>

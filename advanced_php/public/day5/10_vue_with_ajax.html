@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.1/css/bulma.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        #app{
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+    </style>
+    <title>Vue With Ajax</title>
+</head>
+<body>
+    <div id="app">
+
+        <div class="container">
+
+            <div class="columns">
+
+                <div class="column is-half">
+
+                    <h1 class="title">Users</h1>
+
+                    <table class="table">
+                        <tr v-for="user in users">
+                            <td>{{user.id}}</td>
+                            <td>{{user.first}}</td>
+                            <td>{{user.last}}</td>
+                            <td>{{user.email}}</td>
+                            <td>{{user.created_at}}</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="column is-half">
+
+                    <h2 class="subtitle">Add User</h2>
+
+                    <form class="form" id='register'>
+
+                        <p>
+                            <label for="first" class="label" type="text">First Name</label>
+                            <input v-model="user.first" type="text" class="input" name="first">
+                        </p>
+
+                        <p>
+                            <label for="last" type="text" class="label">Last Name</label>
+                            <input v-model="user.last" type="text" class="input" name="last">
+                        </p>
+
+                        <p>
+                            <label for="email" type="text" class="label">Email</label>
+                            <input v-model="user.email" type="text" class="input" name="email">
+                        </p>
+
+                        <p>
+                            <button @click="submit" type="submit" class="button is-primary">Add User</button>
+                        </p>
+
+                    </form>
+                </div>
+
+            </div><!-- /.columns -->
+
+        </div><!-- /.container -->
+        
+    </div> <!-- /#app -->
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                users: [],
+                user: {
+                    first: '',
+                    last: '',
+                    email: ''
+                }
+            },
+            // mounted = window.onload
+            mounted: function(){
+
+                this.getAll();
+                
+            },
+            methods:{
+                getAll: function(){
+
+                    var self = this;
+
+                    $.get('register.php', null, function(data, status, xhr){
+                        self.users = data;
+                    }, 'json');
+
+                },
+                submit: function(){
+                    
+                    var self = this;
+                    $.post('register.php', self.user, function(data, status, xhr){
+                        self.user.first = '';
+                        self.user.last = '';
+                        self.user.email = '';
+                        getAll();
+                    }, 'json');
+                }
+            }
+        });
+
+        // add an event listener (submit) and call a function
+
+        // add that function to methods
+
+        // use ajax to submit by POST the user object to register.php
+
+        // response should be an ["id" => 1] (console.log the data response)
+
+        // getAll users
+    </script>
+</body>
+</html>

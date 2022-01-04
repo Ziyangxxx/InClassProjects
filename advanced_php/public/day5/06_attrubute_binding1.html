@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Attributes binding with Vue</title>
+</head>
+<body>
+    <div id="app">
+
+        <p>
+            Demonstratges binding a value from the model as an attribute value of an element.
+            Also show use of shorthand version of v-bind, which is just the colon " : " 
+        </p>
+
+        <p>
+            <button id="btn1" v-bind:title="my_attr">Click me</button>&nbsp;
+            <button id="btn1" :title="my_attr">Click me</button>
+        </p>
+        
+
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data:{
+                my_attr: 'This attribute set with Vue'
+            }
+        });
+    </script>
+</body>
+</html>

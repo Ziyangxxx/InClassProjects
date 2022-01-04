@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Loading Javascript</title>
+	<!-- Javacript can be loaded in script blocks -->
+	<script type="text/javascript">
+		alert('This will get loaded first!  Top SCRIPT block');
+	</script>
+	<!-- Javascript can be loaded in external files -->
+	<script src="loading_javascript.js"></script>
+</head>
+<!-- Javascript can be loaded inline -->
+<body onload="alert('This will be loaded third!  Inline javascript');">
+
+	<h1>Loading Javascript</h1>
+
+</body>
+</html>

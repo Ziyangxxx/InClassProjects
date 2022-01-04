@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Targeting a Single Element</title>
+	<script>
+
+		window.onload = function() {
+			
+			// Simplest way to target single elements
+			var content = document.getElementById('content');
+
+			var content2 = document.querySelector('#content');
+
+			var p1 = document.querySelector('#content p');
+
+			console.log(content, content2);
+			console.log(p1);
+
+			var paras = document.getElementsByClassName('para');
+
+			// Paras is an HTMLCOllection
+			// It behaves like an array, but it is NOT an array
+			// You should use a standard for loop to iterate
+			// through its elements... NOT a for in loop... 
+			// a for in loop will generate unexpected errors
+			console.log(paras);
+
+			// This will generate an error
+			// for(var i in paras) {
+			// 	paras[i].addEventListener('click', function(e){
+			// 		console.log(this);
+			// 	});
+			// }
+			
+			for(var i = 0; i<paras.length;i++){
+				paras[i].addEventListener('click', function(e){
+					console.log(this);
+				});
+			}
+
+			// to get single element from paras, I need to use the index
+			
+			console.log(paras[1]); // the second para of class para
+		}
+		
+
+	</script>
+</head>
+<body>
+	
+	<h1>Targeting single elements in DOM</h1>
+
+	<div id="content">
+		<p class="para">This is the content</p>
+	</div>
+
+	<div class="sidebar">
+		<p class="para">This is a sidebar para</p>
+	</div>
+
+
+
+</body>
+</html>

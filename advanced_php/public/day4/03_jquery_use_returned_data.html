@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Using Returned Data in Output</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css" />
+	<style>
+		.thumbnail img {
+			width: 50px;
+			height: auto;
+		}
+
+		#list td {
+			vertical-align: middle;
+		}
+	</style>
+	<script>
+
+		// window.onload
+		$(document).ready(function(){
+			// when page loads show all books
+			getAll();
+		});
+
+		/**
+		 * Get all books, pass to outputLis()
+		 * @return void
+		 */
+		function getAll()
+		{
+			// url, data, callback, data_type
+			$.get('book_server.php', null, function(data, status, xhr){
+				outputList(data);
+			}, 'json');
+		}
+
+		/**
+		 * Output a list of books
+		 * @param  Object data 
+		 * @return void
+		 */
+		function outputList(data)
+		{
+			var out = '';
+			for(var i=0;i<data.length;i++) {
+			var b = data[i];
+			out += `<tr>
+				<td class="thumbnail"><img src="images/${b.image}" alt="${b.title}" /></td>
+				<td>${b.title}</td>
+				<td>${b.author}</td>
+				<td>${b.genre}</td>
+				<td>${b.publisher}</td>
+				<td>${b.format}</td>
+			</tr>`;
+			}
+			$('#list').html(out);
+		}
+
+	</script>
+</head>
+<body>
+
+	<div class="container">
+
+
+
+		<div class="row">
+
+			<div class="col">
+
+					<h1>Booksite</h1>
+
+			</div><!-- /col -->
+
+		</div><!-- /row -->
+
+		<div class="row">
+
+			<div class="col-sm-8">
+
+				<h2>Books</h2>
+
+				<div>
+
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>Thumbnail</th>
+								<th>Title</th>
+								<th>Author</th>
+								<th>Genre</th>
+								<th>Publisher</th>
+								<th>Format</th>
+							</tr>
+						</thead>
+						<tbody id="list">
+							
+						</tbody>
+					</table>
+
+				</div>
+
+			</div><!-- /col-sm-8 -->
+
+			<div class="col-sm-4">
+
+
+			</div><!-- /col-sm-4 -->
+
+		</div><!-- /row -->
+
+
+
+
+	</div><!-- /container -->
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

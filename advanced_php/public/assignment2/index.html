@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.1/css/bulma.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Assignment 2</title>
+    <style>
+        body {
+			margin-top: 30px;
+		}
+        a.all{
+            margin-left: 10px;
+        }
+
+        h1{
+            font-weight: bold;
+            font-size: 3.2em;
+        }
+        
+        table{
+            margin-top: 20px;
+        }
+
+        .thumbnail{
+            width: 60px;
+            height: 90px;
+        }
+
+        tbody#list td{
+            padding-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+
+        <div class="container">
+
+            <h1>Book Store</h1>
+            <a class="all" @click = "getAll" href="#">Show All Books</a>
+
+            <div class="columns">
+
+                <div class="column">
+                    
+                    <table class="table is-fullwidth is-bordered">
+
+                        <thead>
+                            <tr>
+                                <th scope="column">Image</th>
+                                <th scope="column">Title</th>
+                                <th scope="column">Author</th>
+                                <th scope="column">Genre</th>
+                                <th scope="column">Format</th>
+                                <th scope="column">Publisher</th>
+                            </tr>
+                        </thead>
+
+                        <tbody v-for="book in books" id="list">
+                            <tr>
+                                <th scope="column" @click.prevent='getDetail(book.book_id)'>
+                                    <img class="thumbnail" 
+                                         :src="'images/covers/' + book.image"  
+                                        >
+                                </th>
+                                <td><a href="#" @click.prevent='getDetail(book.book_id)'>{{book.title}}</a></td>
+                                <td><a href="#" @click.prevent="filter(book.author_id,'author')">{{book.author}}</a></td>
+                                <td><a href="#" @click.prevent="filter(book.genre_id,'genre')">{{book.genre}}</a></td>
+                                <td><a href="#" @click.prevent="filter(book.format_id,'format')">{{book.format}}</a></td>
+                                <td><a href="#" @click.prevent="filter(book.publisher_id,'publisher')">{{book.publisher}}</a></td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+
+                </div><!-- /.column -->
+            
+                <div class="modal" v-bind:class="{'is-active': show_modal}">
+                    <div class="modal-background"></div>
+                    <div class="modal-card">
+
+                        <header class="modal-card-head">
+                          <p class="modal-card-title"><strong>{{book.title}}</strong></p>
+                          <button class="delete" aria-label="close" @click="show_modal=false"></button>
+                        </header>
+
+                        <section class="modal-card-body">
+                            <div class="columns">
+                                <div class="column is-half">
+                                    <img :src="'images/covers/' + book.image">
+                                </div>
+                                <div  class="column is-half">
+                                    <ul class="list-group">
+                                        <li class="list-group-item"><strong>Title: </strong>{{book.title}}</li>
+                                        <li class="list-group-item"><strong>Author: </strong>{{book.author}}</li>
+                                        <li class="list-group-item"><strong>Year: </strong>{{book.year_published}}</li>
+                                        <li class="list-group-item"><strong>Price: </strong>{{book.price}}</li>
+                                        <li class="list-group-item"><strong>Format: </strong>{{book.format}}</li>
+                                        <li class="list-group-item"><strong>Genre: </strong>{{book.genre}}</li>
+                                        <li class="list-group-item"><strong>Page Number: </strong>{{book.num_pages}}</li>
+                                        <li class="list-group-item"><strong>Publisher: </strong>{{book.publisher}}</li>
+                                        <li class="list-group-item"><strong>In Print: </strong>{{book.in_print}}</li>
+                                        <li class="list-group-item"><strong>Description: </strong>{{book.description}}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </section>
+
+                        <footer class="modal-card-foot"></footer>
+
+                      </div>
+
+                  </div>
+
+            </div><!-- /.columns -->
+
+        </div><!-- /.container -->
+
+    </div><!-- /#app -->
+
+    <script>
+        new Vue({
+            el: '#app',
+            data:{
+                books:[],
+                book:[],
+                show_modal: false,
+            },
+            mounted: function(){
+
+                this.getAll();
+
+            },
+            methods:{
+                getAll: function(){
+                    var self = this;
+
+                    $.get('book_server.php', null, function(data, status, xhr){
+                        self.books = data;
+                        console.log(data)
+                    }, 'json');
+                },
+                getDetail: function(id){
+                    console.log(id);
+                    var self = this;
+                    data = {
+                        book_id: id
+                    };
+                    $.get('book_server.php', data, function(data, status, xhr){
+
+                        if(data.in_print === 1){
+                            data.in_print = "Printing";
+                        }else{
+                            data.in_print = "Printed";
+                        }
+                        self.book = data;
+
+                    }, 'json');
+
+                    self.show_modal = true;
+
+                },
+                filter: function(id,cat){
+                    console.log(id,cat);
+                    var self = this;
+                    if(cat === "author"){
+                        data = {
+                            author_id: id
+                        };
+                        $.get('book_server.php', data, function(data, status, xhr){
+                            self.books = data;
+                        }, 'json');
+                    }else if(cat === "genre"){
+                        data = {
+                            genre_id: id
+                        };
+                        $.get('book_server.php', data, function(data, status, xhr){
+                            self.books = data;
+                        }, 'json');
+                    }else if(cat === "format"){
+                        data = {
+                            format_id: id
+                        };
+                        $.get('book_server.php', data, function(data, status, xhr){
+                            self.books = data;
+                        }, 'json');
+                    }else if(cat === "publisher"){
+                        data = {
+                            publisher_id: id
+                        };
+                        $.get('book_server.php', data, function(data, status, xhr){
+                            self.books = data;
+                        }, 'json');
+                    }
+
+                }
+            }// end of methods
+        });
+    </script>
+    
+</body>
+</html>

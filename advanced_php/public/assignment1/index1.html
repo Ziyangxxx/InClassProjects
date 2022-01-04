@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css" />
+    <title>Vanilla Ajax</title>
+    <style>
+        body {
+			margin-top: 30px;
+		}
+
+        h1{
+            font-weight: bold;
+        }
+        
+        table{
+            margin-top: 20px;
+        }
+
+        .thumbnail{
+            width: 60px;
+            height: 90px;
+        }
+
+        tbody#list td{
+            padding-top: 40px;
+        }
+
+    </style>
+
+    <script>
+        window.onload = function(){
+            getAll();
+            handleForm();
+        }
+
+        //xhr
+
+        function getAll(){
+
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET','server.php');
+            xhr.responseType = 'json';
+            xhr.onreadystatechange = function(){
+                if(this.readyState === 4 && this.status === 200){
+                    // console.log(this.response);
+                    outputList(this.response);
+                }
+            }
+
+            xhr.send();
+        }
+
+        function outputList(list){
+            var html = '<tbody>';
+            for(var i=0;i<list.length;i++){
+                
+                var item = `<tr>
+                            <th scope="row">
+                                <img class="thumbnail" src="images/covers/${list[i].image}" alt="${list[i].title}">
+                            </td>
+                            <td>
+                                <a onclick="return loadDetail(event, this);" href="#" data-id="${list[i].book_id}">
+                                    ${list[i].title}
+                                </a>
+                            </td>
+                            <td>${list[i].author}</td>
+                            <td>${list[i].genre}</td>
+                            <td>${list[i].year_published}</td>
+                            </tr>`;
+                html += item;
+                
+            }
+            html += '</tbody>';
+            document.getElementById('list').innerHTML = html;
+        }
+
+        function loadDetail(e, el){
+            console.log(el);
+            e.preventDefault();
+            var id = el.getAttribute('data-id');
+            var data = 'book_id=' + id;
+
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', `server.php?${data}`, encodeURI(data));
+            xhr.responseType = 'json';
+            xhr.onreadystatechange = function(){
+                if(this.readyState === 4 && this.status === 200){
+                    let file = this.response;
+                    console.log(file);
+                    outputDetail(file);
+                }
+            }
+            xhr.send();
+        }
+
+        function outputDetail(book){
+            var html = `
+                <div class="row">
+                    <div class="col-xs-7">
+                        <img src="images/covers/${book.image}" alt="${book.title}">
+                    </div>
+                    <div class="col-xs-5">
+                        <ul class="list-group">
+                            <li class="list-group-item"><strong>Title: </strong>${book.title}</li>
+                            <li class="list-group-item"><strong>Author: </strong>${book.author}</li>
+                            <li class="list-group-item"><strong>Year: </strong>${book.year}</li>
+                            <li class="list-group-item"><strong>Price: </strong>${book.price}</li>
+                            <li class="list-group-item"><strong>Format: </strong>${book.format}</li>
+                            <li class="list-group-item"><strong>Genre: </strong>${book.genre}</li>
+                            <li class="list-group-item"><strong>Page Number: </strong>${book.num_pages}</li>
+                            <li class="list-group-item"><strong>Publisher: </strong>${book.publisher}</li>
+                            <li class="list-group-item"><strong>In Print: </strong>${book.in_print}</li>
+                            <li class="list-group-item"><strong>Description: </strong>${book.description}</li>
+                        </ul>
+                    </div>
+                </div>`;
+
+            document.getElementById('detail').innerHTML = html;
+        }
+
+        /**
+		 * Stack Overflow - escape function for Javascript
+		 * @param  {string} text 
+		 * @return {string} sanitized text
+		 */
+		function e(text) {
+  			return text
+		      .replace(/&/g, "&amp;")
+		      .replace(/</g, "&lt;")
+		      .replace(/>/g, "&gt;")
+		      .replace(/"/g, "&quot;")
+		      .replace(/'/g, "&#039;");
+		}
+
+        function handleForm()
+		{
+			document.getElementById('s').addEventListener('keyup', function(e){
+				var xhr = new XMLHttpRequest();
+				var data = 's=' + this.value;
+				xhr.open('GET', 'server.php?' + encodeURI(data));
+				xhr.responseType = 'json';
+				xhr.onreadystatechange = function() {
+					if(this.readyState === 4 && this.status === 200) {
+						outputList(this.response);
+                        console.log(this.response);
+					}
+				}
+				xhr.send();
+			});
+		}
+
+        function handleSubmit()
+		{
+			document.getElementById('search').addEventListener('submit', function(e){
+				e.preventDefault();
+				handleForm();
+			});
+		}
+
+
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Book Store</h1>
+        <div class="row">
+            <div class="col-md-6">
+                <form class ="form" id="search">
+                    <input id="s"
+                           class="form-control" 
+                           name="s" 
+                           type="text" 
+                           placeholder="Search for title or author"
+                    />
+                </form>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Image</th>
+                            <th scope="col">Title</th>
+                            <th scope="col">Author</th>
+                            <th scope="col">Genre</th>
+                            <th scope="col">Year</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="list">
+                        <!-- List view -->
+                    </tbody>
+                </table>
+            </div>
+        
+            <div id="detail" class="col-md-6">
+                <!-- output detail view -->
+            </div>
+
+        </div>
+
+        
+
+    </div>
+    
+    
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

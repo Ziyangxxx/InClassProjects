@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>jQuery Post</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css" />
+	<script>
+
+        $(document).ready(function(){
+            handleForm();
+        });
+
+
+        function handleForm(){
+            $('#author').submit(function(e){
+                // prevent form submission
+                e.preventDefault();
+
+                // make sure all fields are filled
+                if(!$('#author_name').val() || !$('#author_country').val()){
+                    alert('All fields are required!');
+                    return;
+                }
+
+                // extract data from form
+                var data = $(this).serialize();// this convert the data into a string in, check console.log(data)
+                /* console.log(data); */
+
+                // vanilla way to reset the form after submit
+                this.reset();
+
+                // make post submission
+                $.post('server_04.php', data, function(data, status, xhr){
+                    console.log(data);
+                    console.log(status);
+                    console.log(xhr);
+                    outputUser(data);
+
+                }, 'json');
+                    // console.log return data
+
+            });
+        }
+
+        function outputUser(data){
+
+            var out = `<h2>New Author</h2>
+
+            <p>You added the following new author...</p>
+
+            <ul class="list-group">
+                <li class="list-group-item"><strong>ID</strong>: ${data.author_id}</li>
+                <li class="list-group-item"><strong>Author Name</strong>: ${data.name}</li>
+                <li class="list-group-item"><strong>Author Country</strong>: ${data.country}</li>
+            </ul>`
+
+            $('#new_author').html(out); // write the data
+
+        }
+		
+	</script>
+</head>
+<body>
+	<div class="container">
+
+		<div class="row">
+
+			<div class="col-sm-6">
+				<h1>Add an Author</h1>
+
+				<form id="author" class="form">
+					<div class="form-group">
+						<label class="label" for="name">Author Name</label>
+						<input type="text" class="form-control" name="name" id="author_name" />
+					</div>
+					<div class="form-group">
+						<label class="label" for="country">Author Country</label>
+						<input type="text" class="form-control" name="country" id="author_country" />
+					</div>
+					<div class="form-group">
+						<button type="submit" class="btn btn-primary">Submit</button>
+					</div>
+				</form>
+
+			</div><!-- /sm-6 -->
+
+			<div id="new_author" class="col-sm-6">
+
+                
+
+			</div><!-- /sm-6 -->
+
+		</div>
+
+	</div>
+
+</body>
+</html>

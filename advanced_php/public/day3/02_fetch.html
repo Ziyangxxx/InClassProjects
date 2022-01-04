@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Fetch with Post</title>
+
+	<script>
+
+		var url = 'server_01.php';
+		var data = encodeURI('first=Dave&last=Jones&email=dave@example.com');
+
+		var params = {
+				method: "POST",
+				body: data,
+				headers: {
+					"Content-Type": "application/x-www-form-urlencoded" // makes data avail in $_POST
+				}
+			};
+
+		fetch(url, params)
+			.then(function(response){
+				return response.json();
+			})
+			.then(function(data)
+			{
+				console.log(data);
+			})
+			.catch(function(error){
+				console.error(error);
+			});
+
+
+	</script>
+
+</head>
+<body>
+
+	<h1>Fetch with POST data</h1>
+
+	<p>Please see console for output</p>
+
+</body>
+</html>

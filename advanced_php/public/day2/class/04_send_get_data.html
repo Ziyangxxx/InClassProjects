@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Send Get Data</title>
+	<script>
+
+		// create xhr object
+		var xhr = new XMLHttpRequest();
+
+		// prepare data string
+		var data = 'first=Dave&last=Jones&email=dave@example.com';
+
+		// open request to url, encode data as URI friendly string
+		xhr.open('GET', 'server_04.php?' + encodeURI(data));
+
+		// set response type 
+		xhr.responseType = 'json';
+		
+		// add onreadystatechange handler (console log the response)
+		xhr.onreadystatechange = function() {
+			if(xhr.readyState == 4 && xhr.status == 200) {
+				console.log(xhr.response);
+			}
+		}
+
+		// send the request
+		// In a GET request, nothing can be appended to the body
+		// so the send() parameter is null by default
+		xhr.send();
+
+	</script>
+</head>
+<body>
+
+	<h1>Sending Get Data with XMLHttpRequest Object</h1>
+
+	<p>See console for output</p>
+
+</body>
+</html>

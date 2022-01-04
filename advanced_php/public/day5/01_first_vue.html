@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var data = {
+            message: "hello world!",
+            title: "my first Vuew file",
+            name: ""
+        }
+
+        window.onload = function(){
+            new Vue({
+                el: '#root',
+                data: data
+            });
+
+            new Vue({
+                el: '#app',
+                data: {
+                    title: "i am the second instance of Vue!"
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+    <div id="root">
+        <h1>{{title}}</h1>
+        <h2>{{message}}</h2>
+        <h3 v-text="message"></h3>
+        <p><input id="hello" v-model="name" placeholder="enter a name"></p>
+        <p>i want to say hello to: {{name}}</p>
+    </div>
+
+    <div id="app">
+        <h2>{{title}}</h2>
+    </div>
+</body>
+</html>

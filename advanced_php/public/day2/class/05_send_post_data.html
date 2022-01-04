@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Send POST data with XHR</title>
+
+	<script>
+
+		// create xhr object
+		var xhr = new XMLHttpRequest();
+		
+		// create some data 
+		var data = 'first=Dave&last=Jones&email=dave@example.com';
+		
+		// open request with method and uri
+		xhr.open('POST', 'server_05.php');
+		
+		// set response type
+		xhr.responseType = 'json';
+
+		// xhr set request type header
+		// Tells PHP, this is as if it came from a form
+		// make it available in $_POST
+		xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+			
+		// set onreadystatechange handler (console log response)
+		xhr.onreadystatechange = function() {
+			if(this.readyState == 4 && this.status == 200) {
+				console.log(this.response);
+			}
+		}
+
+		// send request with data
+		xhr.send(encodeURI(data));
+
+	</script>
+
+</head>
+<body>
+
+	<h1>Send Post Data with XHR</h1>
+
+	<p>See console for output</p>
+
+</body>
+</html>

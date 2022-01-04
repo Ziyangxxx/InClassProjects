@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Address Book Form</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css" />
+	<style>
+		body {
+			margin-top: 50px;
+		}
+	</style>
+
+	<script>
+
+
+
+		/**
+		 * Stack Overflow - escape function for Javascript
+		 * @param  {string} text 
+		 * @return {string} sanitized text
+		 */
+		function e(text) {
+  			return text
+		      .replace(/&/g, "&amp;")
+		      .replace(/</g, "&lt;")
+		      .replace(/>/g, "&gt;")
+		      .replace(/"/g, "&quot;")
+		      .replace(/'/g, "&#039;");
+		}
+
+	</script>
+
+</head>
+<body>
+
+	<div class="container">
+
+		<div class="row">
+
+			<div class="col-md-6">
+
+				<h1>Add A Record</h1>
+
+				<form class="form" id="register">
+
+					<fieldset>
+
+						<legend>Address Book</legend>
+
+						<div class="form-group">
+							<label for="first_name">First Name</label>
+							<input class="form-control" name="first_name" id="first_name" />
+						</div>
+
+						<div class="form-group">
+							<label for="last_name">Last Name</label>
+							<input class="form-control" name="last_name" id="last_name" />
+						</div>
+
+						<div class="form-group">
+							<label for="street">Street</label>
+							<input class="form-control" name="street" id="street" />
+						</div>
+
+						<div class="form-group">
+							<label for="city">City</label>
+							<input class="form-control" name="city" id="city" />
+						</div>
+
+						<div class="form-group">
+							<label for="postal_code">Postal Code</label>
+							<input class="form-control" name="postal_code" id="postal_code" />
+						</div>
+
+						<div class="form-group">
+							<label for="country">Country</label>
+							<input class="form-control" name="country" id="country" />
+						</div>
+
+						<div class="form-group">
+							<label for="phone">Phone</label>
+							<input class="form-control" name="phone" id="phone" />
+						</div>
+
+
+						<div class="form-group">
+							<label for="email1">Email 1</label>
+							<input class="form-control" name="emails[]" id="email1" />
+						</div>
+
+						<div class="form-group">
+							<label for="email2">Email 2</label>
+							<input class="form-control" name="emails[]" id="email2" />
+						</div>
+
+						<div class="form-group">
+
+							<button type="reset" class="btn btn-danger">Reset</button>&nbsp;<button type="submit" id="submit" class="btn btn-primary">Submit</button>
+						</div>
+
+					</fieldset>
+
+
+				</form>
+
+			</div>
+
+			<div id="detail" class="col-md-6">
+				<!-- output detail view -->
+			</div>
+
+		</div>
+
+	</div>
+
+
+<!-- JS for jQuery and Bootstrap -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

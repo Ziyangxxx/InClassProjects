@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Targeting multiple DOM elements</title>
+	<script>
+
+		// usually referring to groups based on class or tagname
+		// document.getElementsByTagName()
+		// document.getElementsByClassName()
+		// Each of which return an HTML collection, which can be
+		// treated, for the most part, as an array
+		
+		// Capture ALL links
+		var links = document.getElementsByTagName('a');
+		console.log(links);
+
+		// var links2 = new Array();
+		// for(var i =0; i < links.length; i++) {
+		// 	if(!links[i].hasClassName('link')) {
+		// 		links2.push(links[i]);
+		// 	}
+		// }
+
+		// console.log(links2);
+		
+		var links2 = document.getElementsByClassName('link');
+		console.log(links2);
+
+		// To iterate over an HTML collection, alwasy use
+		// a standard for loop
+		
+		
+
+	</script>
+</head>
+<body>
+
+	<h1>Targeting multiple DOM elements</h1>
+
+	<nav>
+	  	<ul>
+		    <li class="navlink"><a class="link" href="/home">Home</a></li>
+		    <li class="navlink"><a class="link" href="/about">About</a></li>
+		    <li class="navlink"><a class="link" href="/clients">Clients</a></li>
+		    <li class="navlink"><a class="link" href="/contact">Contact Us</a></li>
+  		</ul>
+	</nav>
+
+	<p>
+		<a href="https://google.ca">Google</a><br />
+		<a href="https://duckduckgo.com">DuckDuckGo</a><br />
+		<a href="https://dogpile.com">Dogpile</a><br />
+		<a href="https://bing.com">Bing</a><br />
+	</p>
+
+</body>
+</html>

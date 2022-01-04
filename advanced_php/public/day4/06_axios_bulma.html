@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.1/css/bulma.min.css" />
+    <style>
+		.thumbnail img {
+			width: 70px;
+			height: auto;
+		}
+
+		#list td {
+			vertical-align: middle;
+		}
+	</style>
+    <script>
+
+        window.onload=function(){
+            axios.get('book_server.php')
+            .then(function(response){
+                console.log(response.data);
+                outputList(response.data);
+            })
+            .catch(function(error){
+                console.error(error);
+            });
+        }
+
+        function outputList(data){
+            var out = '<table class="table">';
+			for(var i=0;i<data.length;i++) {
+			var b = data[i];
+			out += `<tr>
+                        <td class="thumbnail"><img src="images/${b.image}" alt="${b.title}" /></td>
+                        <td>${b.title}</td>
+                        <td>${b.author}</td>
+                        <td>${b.genre}</td>
+                        <td>${b.publisher}</td>
+                        <td>${b.format}</td>
+                    </tr>`;
+            
+            }
+            out += "</table>"
+			document.getElementById('list').innerHTML = out;
+		
+        }
+        
+    </script>
+    <title>Axios with Bulma</title>
+</head>
+<body>
+    <div class="container">
+
+        <div class="columns">
+
+            <div class="column is-half">
+
+                <h1 class="title">Books</h1>
+
+                <div id="list">
+
+                </div>
+
+            </div>
+
+
+            <div class="column is-half">
+
+                <h2 class="subtitle">Detail</h2>
+            
+            </div>
+
+        </div>
+        
+
+    </div>
+</body>
+</html>

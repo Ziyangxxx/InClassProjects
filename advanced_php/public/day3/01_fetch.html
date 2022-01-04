@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>First Fetch</title>
+	<script>
+		var data = encodeURI('id=3');
+		fetch('server_01.php?' + data)
+			.then(function(response){
+				return response.json();
+			})
+			.then(function(data){
+				console.log(data);
+			})
+            .catch(function(error){
+                console.log('We got error');
+                console.error(error);
+            });
+
+		// fetch('server_01.php?' + data)
+		// 	.then(response => response.json())
+		// 	.then(data => {
+		// 		console.log(data)
+		// 	});
+
+
+	</script>
+</head>
+<body>
+	<h1>First Fetch</h1>
+
+	<p>Please check console for output.</p>
+
+</body>
+</html>

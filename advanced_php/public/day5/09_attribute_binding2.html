@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Attributes binding with Vue</title>
+    <style>
+
+        .is_loading{
+            background: #900;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+
+        <p>
+            Demonstratges binding a value from the model as an attribute value of an element.
+            Also show use of shorthand version of v-bind, which is just the colon " : " 
+        </p>
+
+        <p>
+            <button id="btn1" v-bind:title="my_attr" v-bind:disabled="loading">Click me</button>&nbsp;
+            <button id="btn2" :title="my_attr" :disabled="loading">Click me</button>
+            <button id="btn3" @click="clicked" :title="my_attr" v-bind:class="{'is_loading': loading}">{{btn_text}}</button>
+        </p>
+        
+
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data:{
+                my_attr: 'This attribute set with Vue',
+                btn_text: 'Click me too!',
+                loading: false
+            },
+            methods:{
+                clicked: function(){
+                    if(this.loading){
+
+                        this.loading = false;
+                        this.btn_text = 'Click me, too!'
+
+                    }else{
+
+                        this.loading = true;
+                        this.btn_text = 'I was clicked!'
+                        
+                    }
+                    
+                }
+            }
+        });
+
+        // Add click handler to third button, and call a function
+
+        // Create that function in the methods object
+
+        // in that function set:
+            // loading to true
+            // button text change to I was clicked!
+
+        
+    </script>
+</body>
+</html>

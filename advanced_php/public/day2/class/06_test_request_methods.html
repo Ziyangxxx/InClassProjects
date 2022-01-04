@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Testing Request Methods</title>
+	<script>
+
+		// window onload
+			// add event listener to buttons (click)
+				// extract data-method
+				// call function with method
+		window.onload = function() {
+			handleButtons();
+		}
+		
+		// Create a function to accept a method type (GET, POST)
+		// make xhr request using that method type
+		
+
+
+
+		function handleButtons()
+		{
+			// select all buttons
+			var buttons = document.getElementsByTagName('button');
+			// use a standard for loop to loop through them
+			for(var i=0;i<buttons.length;i++) {
+				buttons[i].addEventListener('click', function(e){
+					var method = this.getAttribute('data-method');
+					console.log(method);
+					load(method);
+				});
+			}
+		}
+
+		function load(method)
+		{
+			// create xhr object
+			var xhr = new XMLHttpRequest();
+
+			// open with method and uri (server_06.php)
+			xhr.open(method, 'server_06.php');
+
+			// set response type
+			xhr.responseType = 'json';
+			
+			// create onreadystatechange handler
+			xhr.onreadystatechange = function() {
+
+				if(this.readyState == 4 && this.status == 200) {
+					var resp = this.response;
+					document.getElementById('output').innerHTML = '<h2>Request Method: ' + resp.method + '</h2>';
+				}
+			}
+			
+			// send (make sure you send null)
+			// If you are sending data using any request method other that GET or POST,
+			// you must remove the Content-Type application/x-www-form-urlencoded,
+			// so that the data is accessible in 'php://input'
+			xhr.send(null);
+		
+		}
+
+	</script>
+</head>
+<body>
+
+	<h1>Testing Request Methods</h1>
+
+	<!-- RESTful request methods -->
+	<p><button data-method="GET">GET</button>&nbsp;
+		<button data-method="POST">POST</button>&nbsp;
+		<button data-method="PUT">PUT</button>&nbsp;
+		<button data-method="PATCH">PATCH</button>&nbsp;
+		<button data-method="DELETE">DELETE</button></p>
+
+	<div id="output"></div>
+
+</body>
+</html>

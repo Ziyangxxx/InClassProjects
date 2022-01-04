@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Sending GET data with jQuery</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script>
+
+		var data = {
+			first_name: 'Dave',
+			last_name: 'Jones',
+			email: 'dave@example.com',
+			hobbies: ['cycling', 'astrongomy', 'movies'],
+			subscribe: 0
+		}
+
+		// accepts four params: .get(url, data, success_callback, data_type) 
+		$.get('server_02.php', data, function(data, status, xhr){
+			console.log(data);
+			console.log(status);
+			console.log(xhr);
+		}, 'json');
+
+
+	</script>
+</head>
+<body>
+
+	<h1>Sending GET data with jQuery</h1>
+
+	<p>Please see console for output</p>
+
+</body>
+</html>

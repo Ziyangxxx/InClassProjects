@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Send JSON data with XHR</title>
+	<script>
+
+		// create xhr object
+		var xhr = new XMLHttpRequest();
+
+		// create a complex json object
+		var data = {};
+		data.first = 'Dave';
+		data.last = 'Jones';
+		data.email ='dave@example.com';
+		data.hobbies = ['astronomy', 'reading', 'cycling'];
+		data.subscribe = 1;
+		
+		// open connection using POST to server_07.php
+		xhr.open('POST', 'server_07.php');
+
+		// set responseType
+		xhr.responseType = 'json';
+		
+		// create handler for onreadystatechange (console log the response)
+		xhr.onreadystatechange = function() {
+			if(this.readyState === 4 && this.status === 200) {
+				console.log(this.response);
+			}
+		}
+
+		// send request with data using JSON.stringify()
+		// Must convert data as string to transmit
+		xhr.send(JSON.stringify(data));
+
+	</script>
+</head>
+<body>
+	<h1>Send JSON data with XHR</h1>
+
+	<p>See console for output</p>
+
+</body>
+</html>

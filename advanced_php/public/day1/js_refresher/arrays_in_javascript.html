@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Arrays in Javascript</title>
+
+	<script>
+
+		// In Javascript, the length of an array is always
+		// one higher than it's highest index
+		var books = ['Dune', 'Dune Messiah', 'Shining'];
+
+		// What is the length of this array?
+		// This array now has a length of 23
+		books[22] = 'Carrie';
+		console.log(books);
+
+
+		// Best way to iterate arrays:
+		// for loop
+		// while loop
+		// for in loop
+		
+
+		// do not use a for in loop to go through
+		// Just use a for loop
+		var links = document.getElementsByTagName('a');
+
+
+
+		var user = [];
+		var user1 = new Array();
+
+		console.log(user); // has length of zero
+		console.log(user1);
+
+		user['first'] ='Dave';
+		user['last'] = 'Jones';
+		user['email'] = 'dave@example.com';
+		user.push('Tom'); // array length now 1
+
+		// What is the length of user?
+		// Length is still 0 - the associative key/value pairs
+		// are object properties, not array members
+		// // Create an object, not an array, to hold key/value pairs
+		// In Python, this is a Dict
+		// In PHP it's a TRUE associve array
+		
+
+		// If you want to use key/value pairs, it's better to
+		// do so in a literal object, that's where they belong
+		user3 = {}; 
+
+		user3['first'] ='Dave';
+		user3['last'] = 'Jones';
+		user3['email'] = 'dave@example.com';
+		
+
+		
+
+
+	</script>
+</head>
+<body>
+	<h1>Arrays in Javascript</h1>
+
+</body>
+</html>

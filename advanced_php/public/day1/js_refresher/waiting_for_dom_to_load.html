@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Waiting for DOM to Load</title>
+	<script>
+
+		// Must wait for window to load (DOM to load) before we can
+		// access and manipulate DOM elements... eg: add an event listener
+		// Every event handler can accept the Event as a parameter... 
+		// although you don't always need or want it... in this case, for
+		// example... there is need for it... except as a demonstration
+		window.onload = function(e) {
+
+			// This should be the event
+			console.log(e);
+
+			// This should be the window (the object that triggered the event)
+			console.log(this);
+
+			var links = document.getElementsByTagName('a');
+
+			// This adding of event Listener will not work if this
+			// code appears before the window has loaded
+			for(var i = 0; i < links.length; i++) {
+
+				links[i].addEventListener('click', function(e){
+					e.preventDefault();
+					console.log(this.href);
+					// We can also invoke functions OUTSIDE the window.onload
+					// handler, at this point
+					showHref(this);
+				});
+
+			}
+
+
+		}
+
+
+		/**
+		 * This function will be called by a click on any link
+		 * @param  {[Object]} el the link
+		 * @return void
+		 */
+		function showHref(el)
+		{
+			alert(el.href);
+		}
+
+		
+
+
+	</script>
+</head>
+<body>
+
+	<h1>Waiting for the DOM to load</h1>
+
+	<a href="http://google.ca">Google</a>
+
+</body>
+</html>

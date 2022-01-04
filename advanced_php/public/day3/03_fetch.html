@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Fetch with Post - JSON</title>
+
+	<script>
+
+		var url = 'server_01.php';
+		
+		var data = {
+			first: 'Dave',
+			last: 'Jones',
+			email: 'dave@example.com'
+		}
+
+		var params = {
+				method: "POST",
+				body: JSON.stringify(data),
+				header: {
+					"Content-Type": "application/json"
+				}
+			};
+
+		fetch(url, params)
+			.then(function(response){
+				return response.json();
+			})
+			.then(function(data)
+			{
+				console.log(data);
+			})
+			.catch(function(error){
+				console.error(error);
+			});
+
+
+	</script>
+
+</head>
+<body>
+
+	<h1>Fetch with POST data - JSON</h1>
+
+	<p>Please see console for output</p>
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Output</title>
+	<script>
+
+		window.onload = function() {
+
+			var user = {
+				'first': 'Dave',
+				'last': 'Jones',
+				'email': 'edu@example.com'
+			};
+
+			// Perfectly okay to go OLD SCHOOL and concatenate
+			// your dynamic HTML with javascript
+			var out = '<ul>';
+			out += "<li><strong>First</strong>: " + user.first + '</li>';
+			out += "<li><strong>Last</strong>: " + user.last + '</li>';
+			out += "<li><strong>Email</strong>: " + user.email + '</li>';
+			out += '</ul>';
+
+			document.getElementById('output').innerHTML = out;
+
+			// Also okay to use modern JSX syntax so you can 
+			// embed variables
+			var out2 = `<ul>
+				<li><strong>First:</strong> ${user.first}</li>
+				<li><strong>Last:</strong> ${user.last}</li>
+				<li><strong>Email:</strong> ${user.email}</li>
+				</ul>`;
+
+			document.getElementById('output2').innerHTML = out2;
+
+		}
+
+	</script>
+</head>
+<body>
+
+	<div id="output"></div>
+
+	<div id="output2"></div>
+
+</body>
+</html>
