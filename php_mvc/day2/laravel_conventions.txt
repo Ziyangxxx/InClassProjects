@@ -1,0 +1,39 @@
+# Laravel Conventions
+
+* Tablenames - always plural
+	+ students
+	+ posts
+	+ books
+	+ NOT
+		- student
+		- post
+		- book
+
+* Primary key should be `id`
+	- NOT
+		- book_id
+		- post_id
+
+* Foreign keys should be singular table name, followed by _id
+	- YES
+		- book_id
+		- post_id
+		- user_id
+	- NO
+		- books_id
+		- users_id
+		- posts_id
+
+* All models must be singular version of table
+	- YES
+		- Book
+		- Post
+		- Student
+	- NO
+		- Books
+		- Posts
+		- StudentModel
+
+* Intersect Tables
+	- Two Tables:  books and authors
+		- Intersect:   authors_books

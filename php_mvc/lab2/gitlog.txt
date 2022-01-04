@@ -1,0 +1,119 @@
+commit 1fa9720b79fe8afff326035793be1098f3c47e24
+Author: Carlos <asdiop963@hotmail.com>
+Date:   Tue Oct 27 18:26:30 2020 -0500
+
+    FINAL COMMIT
+
+commit 5167974c38213988382273f6ce53c7ce0d8ad9a6
+Author: Carlos <asdiop963@hotmail.com>
+Date:   Tue Oct 27 18:19:23 2020 -0500
+
+    10th: modifying detail page
+
+commit 19c65bd2b3fb767c7a0be5d5eb21fffaa6e4aeb8
+Author: Carlos <asdiop963@hotmail.com>
+Date:   Tue Oct 27 16:39:37 2020 -0500
+
+    9th: list view page displayed properly
+
+commit 2a0dac4bcdd24112afaecc6de3a1d7f233b93d5a
+Author: Carlos <asdiop963@hotmail.com>
+Date:   Tue Oct 27 16:08:56 2020 -0500
+
+    8th: modified set up to display style for page
+
+commit eac3fa5e493df77aa51f9b46665e1a198c08d3d6
+Author: Carlos <asdiop963@hotmail.com>
+Date:   Mon Oct 26 19:17:24 2020 -0500
+
+    7th: added 2 view pages, added functions in controller, added routes
+
+commit b7af73e484413ced4c6b5959c5ac1f5a6c23c945
+Author: Carlos <asdiop963@hotmail.com>
+Date:   Mon Oct 26 19:00:40 2020 -0500
+
+    6th: added routes to each page
+
+commit fb743db50b34f1444235b15d85e6c3a0ae4a3092
+Author: Carlos <asdiop963@hotmail.com>
+Date:   Mon Oct 26 18:45:30 2020 -0500
+
+    5th: added content in seed created MoviesController
+
+commit 9d6e570244f7bb663ee557309217a3a8f5655cca
+Author: Carlos <asdiop963@hotmail.com>
+Date:   Mon Oct 26 17:23:54 2020 -0500
+
+    4th: created model and seeder
+
+commit 18cfca64aaa95204a8805785fd9a4d3992921eb5
+Author: Carlos <asdiop963@hotmail.com>
+Date:   Mon Oct 26 17:16:26 2020 -0500
+
+    3rd: added fields to table
+
+commit 2dbd110bfbedb33c886a6559c820df840d38f9c9
+Author: Carlos <asdiop963@hotmail.com>
+Date:   Mon Oct 26 17:08:12 2020 -0500
+
+    2nd: created migration
+
+commit 08221bd5807be6a95806ff29922a2ca8110557c1
+Author: Carlos <asdiop963@hotmail.com>
+Date:   Mon Oct 26 16:54:23 2020 -0500
+
+    1st: lab2 folder created
+
+commit e916748fac3670390b365c842a05aa4d0bb40cf8
+Author: Carlos <asdiop963@hotmail.com>
+Date:   Mon Oct 26 15:16:52 2020 -0500
+
+    class files
+
+commit 8298e6975d65291b6fc557bec10a8da0f2e9d265
+Author: Carlos <asdiop963@hotmail.com>
+Date:   Fri Oct 23 15:48:26 2020 -0500
+
+    FINAL COMMIT: modified style links and image links
+
+commit 33aafa5eff074979dd87c2cee906f1e94193d3d7
+Author: Carlos <asdiop963@hotmail.com>
+Date:   Fri Oct 23 15:33:39 2020 -0500
+
+    4th: modified links for view pages
+
+commit ed662d3318bdf8048fa04f92088894cc7720d772
+Author: Carlos <asdiop963@hotmail.com>
+Date:   Fri Oct 23 15:24:26 2020 -0500
+
+    3rd: added function in pagecontroller to access each page
+
+commit 14eed137d0bc9fc24555bf1883b993995ee248ee
+Author: Carlos <asdiop963@hotmail.com>
+Date:   Fri Oct 23 15:14:28 2020 -0500
+
+    2nd: added routes to each page
+
+commit f8a15dced02a0a6044cec9c1e8dc4f90e36da8a4
+Author: Carlos <asdiop963@hotmail.com>
+Date:   Fri Oct 23 15:03:21 2020 -0500
+
+    1st: copied original file, created PageController file
+
+commit 21c350942171a201bcdcee52f26018975074cded
+Author: Carlos <asdiop963@hotmail.com>
+Date:   Fri Oct 23 14:39:10 2020 -0500
+
+    class files
+
+commit 0ab0442d0f367d0169975f1c5b23d1b2c0ecf6c7
+Author: Carlos <asdiop963@hotmail.com>
+Date:   Fri Oct 23 13:12:24 2020 -0500
+
+    laravel update
+
+commit 70f73989af66f6ef80e5d2f6c7b8331d9c1a65bf
+Author: Carlos <asdiop963@hotmail.com>
+Date:   Fri Oct 23 15:07:17 2020 +0000
+
+    Initial commit
